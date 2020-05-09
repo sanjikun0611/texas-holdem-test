@@ -197,19 +197,19 @@ public class CheckCards : MonoBehaviour
         player1Text.text = checkCardCombo(player1CardCombo);
         player2Text.text = checkCardCombo(player2CardCombo);
 
-        WinnerText.text = checkWinner(player1CardCombo, player2CardCombo, player12Cards[1], player22Cards[1]);
+        WinnerText.text = checkWinner(player1CardCombo, player2CardCombo, player12Cards, player22Cards);
     }
 
-    public string checkWinner(int player1CardCombo, int player2CardCombo, int player1HighCard, int player2HighCard){
+    public string checkWinner(int player1CardCombo, int player2CardCombo, int[] player1HighCard, int[] player2HighCard){
         var sWinner = "";
 
         if(player1CardCombo > player2CardCombo){
             sWinner = "Player 1 Won";
         } else if(player1CardCombo == player2CardCombo){
-            if(player1HighCard > player2HighCard)
+            if((player1HighCard[0] + player1HighCard[1]) > (player2HighCard[0] + player2HighCard[1]))
             {
                 sWinner = "Player 1 Won";
-            } else if (player1HighCard == player2HighCard){
+            } else if ((player1HighCard[0] + player1HighCard[1]) == (player2HighCard[0] + player2HighCard[1])){
                     sWinner = "Draw";
             } else {
                 sWinner = "Player 2 Won";    
